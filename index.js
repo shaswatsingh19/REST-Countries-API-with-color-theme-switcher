@@ -1,6 +1,6 @@
 const countriesContainer = document.querySelector('.countries')
 const countryInput = document.getElementById('country-input')
-
+const RegionInput = document.getElementById('search-by-region')
 
 
 // All countries as page Loads
@@ -9,23 +9,16 @@ function initalPageLoad(){
 }
 initalPageLoad()
 
-
-
 async function showData(url){
     try{
 
         const res  = await fetch(url)
         const countryData = await res.json()
-
-        console.log(countryData)
-
-        const top5 = countryData.slice(0,5)
-        console.log(top5)
     
         countriesContainer.innerHTML = ''
     
         const temp=[]
-        top5.forEach(data => {
+        countryData.forEach(data => {
             const div = document.createElement('div')
             div.classList.add('country')
     
@@ -47,8 +40,6 @@ async function showData(url){
         alert('No Data Found')
 
     }
-
-
 }
 
 
@@ -57,8 +48,6 @@ countryInput.addEventListener('input', (e) =>{
     const inputText = e.target.value
     
     const urlFromSearch = `https://restcountries.com/v3.1/name/${inputText}`
-
-    console.log(urlFromSearch)
 
     if(inputText.length>= 3){
         showData(urlFromSearch)
@@ -69,7 +58,22 @@ countryInput.addEventListener('input', (e) =>{
 })
 
 
+// Search by region
 
+RegionInput.addEventListener('change',(e) => {
+    console.log(e.target.value)
+
+    const inputRegion = e.target.value
+    const urlFromRegion = `https://restcountries.com/v3.1/region/${inputRegion}`
+
+    if(inputRegion == ''){
+        //By Default
+        initalPageLoad()
+    }else{
+
+        showData(urlFromRegion)
+    }
+})
 
 
 // Theme 
