@@ -8,3 +8,9 @@ document.getElementById('theme').addEventListener('click',function(e){
         e.target.textContent = 'Light Mode'
     }
 })
+
+const initialUrl = 'https://restcountries.com/v3.1/all'
+
+document.addEventListener('DOMContentLoaded', (e) =>{
+    // alert('Loaded')
+})

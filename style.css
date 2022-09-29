@@ -14,7 +14,7 @@
 .light{
     --text : #111416;
     --primary:#ffffff;
-    --secondary: #ffffff;
+    --secondary: #fafafa;
 }
 
 body{
@@ -28,8 +28,8 @@ header{
     align-items: center;
     justify-content: space-between;
     padding: 20px;
+    box-shadow: 0 0px 4px var(--text);
 }
-
 #theme{
     cursor: pointer;
 }
@@ -41,7 +41,6 @@ header{
 
 .filters{
     margin: 20px 40px;
-    /* padding: 20px; */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -49,10 +48,30 @@ header{
 option,select{
     color: var(--text);
     background-color: var(--primary);
+     
+    outline: none;
+    border: none;
+    border-right: 20px solid transparent;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 0px 4px var(--text);
+
+
+    max-width: 100%;
+    
 }
 input{
     color: var(--text);
     background-color: var(--primary);   
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0px 4px var(--text);
+
+    padding: 15px;
+
+    max-width: 100%;
+    width: 280px;
 }
 
 
@@ -72,6 +91,8 @@ input{
     background-color: var(--primary);
     cursor: pointer;
     margin: 20px;
+    box-shadow: 0 0px 4px var(--text);
+
 }
 .card-details{
     padding: 0 15px 15px;
@@ -79,15 +100,74 @@ input{
 
 .card-details h2{
     margin: 10px 0;
+    letter-spacing: 2px;
+    font-size: 1.8em;
 }
 .card-details p{
     margin-bottom: 4px;
-    font-weight: 700;
+    font-weight: 300;
+    font-size: large;
+    letter-spacing: 2px;
 }
 .card-details p span{
     opacity: .5;
 }
 img{
     width: 100%;
+    max-width: 100%;
+}
+
+
+
+/* MEDIA queries */
+
+@media screen and (max-width:1200px)  {
+    .countries{
+        grid-template: auto / 1fr 1fr 1fr ;
+    }
+
+    
+}
+
+@media screen and (max-width:840px) {
+    .countries{
+        grid-template: auto / 1fr 1fr ;
+    }
+
+}
+
+@media screen and (max-width:580px) {    
+    .countries{
+        grid-template: auto / 1fr ;
+    }
+    .filters{
+        flex-direction: column;
+        
+    }
+    
+    .search-by-country{
+        margin-bottom: 20px;
+        width: 100%;
+        
+    }
+    input{
+        width: 100%;
+    }
+    select{
+        align-self: flex-start;
+    }
+    
+    
+}
+
+@media screen and (max-width:300px) {    
+
+    header{
+        flex-direction: column;
+    }
+
+    .card-details h2, .card-details p{
+        font-size: .8rem;
+    }
     
 }
