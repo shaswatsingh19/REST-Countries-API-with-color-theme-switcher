@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --text : white;
+    --primary:#2b3743;
+    --secondary: #202d36;
+
+
+}
+
+.light{
+    --text : #111416;
+    --primary:#ffffff;
+    --secondary: #ffffff;
+}
+
+body{
+    color: var(--text);
+    background-color: var(--secondary);
+}
+
+header{
+    background-color: var(--primary);
+}
+
+option,select{
+    color: var(--text);
+    background-color: var(--primary);
+}
+input{
+    color: var(--text);
+    background-color: var(--primary);   
+}
