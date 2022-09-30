@@ -24,10 +24,8 @@ function showData(countryData){
     countriesContainer.innerHTML = ''
     const temp=[]
 
-
-    const top5 = countryData.slice(0,5)
     
-    top5.forEach(data => {
+    countryData.forEach(data => {
         const div = document.createElement('div')
         div.classList.add('country')
         div.setAttribute('id',data.cca2)
@@ -107,6 +105,8 @@ RegionInput.addEventListener('change',(e) => {
 const countryCard = document.querySelectorAll('.country')
 
 
+import showDataForPopUp from './popup.js'
+
 countryCard.forEach(country => {
     country.addEventListener('click',(e) => {
         let ele = e.target 
@@ -121,9 +121,13 @@ countryCard.forEach(country => {
             }
         }
 
-        const urlForPopUp = `https://restcountries.com/v3.1/alpha/${id}`
-
-        showDataForPopUp(urlForPopUp)
+        // console.log(id)
+        
+        // const urlForPopUp = `https://restcountries.com/v3.1/alpha/${id}`
+        
+        // console.log(showDataForPopUp)
+        
+        // showDataForPopUp(urlForPopUp)
 
 
     })

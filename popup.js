@@ -1,8 +1,9 @@
 
-
 const popUpContainer = document.getElementById('popup')
 
 async function showDataForPopUp(urlForPopUp) {
+
+    console.log(urlForPopUp)
 
     try {
 
@@ -12,16 +13,17 @@ async function showDataForPopUp(urlForPopUp) {
         const currCode = Object.keys(data[0].currencies)[0]
         const nativeCode = Object.keys(data[0].name.nativeName)
 
-
+        let border 
         if(data[0].borders){
             // console.log('border')
-            const border = data[0].borders.map(border => {
+            border = data[0].borders.map(border => {
                 return `<span>${border}</span>`
             }).join('')
         }else{
             // console.log('no border')
         }
 
+        
         popUpContainer.innerHTML = `
             <div class="popup-details">
             <img src=${data[0].flags.svg} alt="${data[0].name.common} flag">
@@ -57,9 +59,9 @@ async function showDataForPopUp(urlForPopUp) {
 }
 
 
-showDataForPopUp(`https://restcountries.com/v3.1/alpha/nz`)
+// showDataForPopUp(`https://restcountries.com/v3.1/alpha/in`)
 
-
+export default showDataForPopUp
 
 // Theme 
 
