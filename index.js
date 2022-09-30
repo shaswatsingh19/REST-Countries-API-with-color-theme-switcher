@@ -22,11 +22,15 @@ initalPageLoad()
 function showData(countryData){
 
     countriesContainer.innerHTML = ''
-    
     const temp=[]
-    countryData.forEach(data => {
+
+
+    const top5 = countryData.slice(0,5)
+    
+    top5.forEach(data => {
         const div = document.createElement('div')
         div.classList.add('country')
+        div.setAttribute('id',data.cca2)
 
         div.innerHTML =  ` 
             <img src=${data.flags.svg} alt="${data.name.common} flag image">
@@ -41,6 +45,9 @@ function showData(countryData){
     })
     
     countriesContainer.append(...temp)
+
+
+
 }
 
 
@@ -56,12 +63,10 @@ async function getData(url){
         return countryData
         
     }catch(err){
-        alert('No Data Found')
+        console.log(err)
     }
+    
 }
-
-
-
 
 
 // Search Input  Event 
@@ -95,6 +100,35 @@ RegionInput.addEventListener('change',(e) => {
         getData(urlFromRegion)
     }
 })
+
+
+// Details Pop Up when clicked on country Card 
+
+const countryCard = document.querySelectorAll('.country')
+
+
+countryCard.forEach(country => {
+    country.addEventListener('click',(e) => {
+        let ele = e.target 
+        let id = ''
+
+        while (true){
+            if(ele.parentElement.id){
+                id = ele.parentElement.id
+                break
+            }else{
+                ele = ele.parentElement
+            }
+        }
+
+        const urlForPopUp = `https://restcountries.com/v3.1/alpha/${id}`
+
+        showDataForPopUp(urlForPopUp)
+
+
+    })
+})
+
 
 
 // Theme 
